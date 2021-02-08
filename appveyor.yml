@@ -1,5 +1,5 @@
 #TODO: Change version
-version: 'v0.0.2.{build}'
+version: 'v0.0..{build}'
 
 cache:
   #- other_source
@@ -14,19 +14,24 @@ environment:
 
   matrix:
   ##### msvc 2015 ########
+  - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
+    BUILD_TARGERT: windows_msvc
+    GENERATORS: "Visual Studio 15 2017"
+    TOOLCHAIN_VERSION: 15
+    QT_ROOT: C:\Qt\5.12\msvc2017
+    BUILD_ARCH: x86
+
   - BUILD_TARGERT: windows_msvc
-    GENERATORS: "Visual Studio 14 2015"
+    GENERATORS: "Visual Studio 14 2015 Win64"
     TOOLCHAIN_VERSION: 14
     QT_ROOT: C:\Qt\5.6\msvc2015
     BUILD_ARCH: x86
-    DOWNLOAD_THIRDLIBS_URL: https://github.com/KangLin/RabbitThirdLibrary/releases/download/v0.3.3/windows_msvc14_x86_Release_qt5.9.9_v0.3.3.zip
 
 #  - BUILD_TARGERT: windows_msvc
 #    GENERATORS: "Visual Studio 14 2015 Win64"
 #    TOOLCHAIN_VERSION: 14
 #    QT_ROOT: C:\Qt\5.6\msvc2015_64
 #    BUILD_ARCH: x64
-#    DOWNLOAD_THIRDLIBS_URL: https://github.com/KangLin/RabbitThirdLibrary/releases/download/v0.3.3/windows_msvc14_x64_Release_qt5.10.1_v0.3.3.zip
 
 matrix:
   fast_finish: false
